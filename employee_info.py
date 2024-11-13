@@ -1,4 +1,4 @@
-# Define a dictionary to store employee information
+# Define a list of 6 dictionaries to store 6 employees' information
 employee_data = [
     {"name": "John", "age": 30, "department": "Sales", "salary": 50000},
     {"name": "Jane", "age": 25, "department": "Marketing", "salary": 60000},
@@ -7,6 +7,7 @@ employee_data = [
     {"name": "Mike", "age": 32, "department": "Engineering", "salary": 65000},
     {"name": "Peter", "age": 40, "department": "Sales", "salary": 60000}
 ]
+
 
 def get_employees_by_age_range(age_lower_limit, age_upper_limit):
     result = []
@@ -23,8 +24,12 @@ def calculate_average_salary():
     average = 0
 
     #add your implementation to calculate here
+    for everyDictionary in employee_data:
+        employeeSalary = everyDictionary["salary"]
+        total += employeeSalary
 
-
+    average = total / len(employee_data)
+    average = round(average, 2)
     return average
 
 def get_employees_by_dept(department):
