@@ -8,6 +8,11 @@ employee_data = [
     {"name": "Peter", "age": 40, "department": "Sales", "salary": 60000}
 ]
 
+def sort_employee_data(sort_key):
+    templist = employee_data.copy()
+    templist.sort(key=lambda x: x[sort_key])
+    return templist
+
 
 def get_employees_by_age_range(age_lower_limit, age_upper_limit):
     result = []
@@ -32,11 +37,13 @@ def calculate_average_salary():
     average = round(average, 2)
     return average
 
-def get_employees_by_dept(department):
-    result = []
+def get_employees_by_dept(targetDept):
+    result = [] # a empty list, to be filled in with selected dictionaries 
 
     # Add your implementation from here
-
+    for everyDictionary in employee_data:
+        if everyDictionary["department"] == targetDept:
+            result.append(everyDictionary)
 
     return result
 
@@ -61,6 +68,7 @@ def display_main_menu():
     print("2 - Display average salary")
     print("3 - Display employee within age range")
     print("4 - Display employee in a department")
+    print("5 - Display all records according to sort key")
 
 
     print("Q - Quit")
@@ -85,6 +93,12 @@ def display_main_menu():
         department = input("Name of Department = ")
         employee_info = get_employees_by_dept(department)
         display_records(employee_info)
+
+    elif option == '5':
+        # Ask for the key to be used for sorting
+        sortkey = input("Enter key for sorting = ")
+        newlist = sort_employee_data(sortkey)
+        display_records(newlist)
 
     elif option == 'Q':
         quit()
